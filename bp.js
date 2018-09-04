@@ -68,5 +68,4 @@ fibos.load("chain_api");
 fibos.load("wallet");
 fibos.load("wallet_api");
 
-
 fibos.start();
