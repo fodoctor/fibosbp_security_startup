@@ -4,24 +4,44 @@ import (
 	"os"
 	"github.com/urfave/cli"
 	"github.com/fodoctor/fibosbp_security_startup/log"
-	"github.com/fodoctor/fibosbp_security_startup/action"
+	"io/ioutil"
 )
 
 func main() {
 
 	app := cli.NewApp()
-	app.Name = "FibOS BP Security Program"
-	app.Description = `
-	
-		
-
-	`
 	app.Version = "v0.0.1"
+	app.Name = "FibOS BP Security Program"
+	app.Usage = "An useful program for fibos bps.Code by BlockChain Doctor's fans."
 
-	app.Flags = []cli.Flag {}
+	//god bless you
+	//may be you can delete it ,but nobody can help you but The Buddha
+	{
+		godBytes,err := ioutil.ReadFile("god_bless_you")
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		app.Description = string(godBytes)
+	}
 
-	//bp start action
-	app.Action = action.BpStartAction
+
+	// cli flags config
+	{
+		app.Flags = []cli.Flag {
+			cli.StringFlag{
+				Name: "bp_start",
+				Value: "true",
+				Usage: "Start To Launch bp.js",
+			},
+		}
+
+		app.Flags = []cli.Flag {}
+
+		//TODO bp start action
+		//TODO claim bp rewards action
+		//TODO get bp account balance
+	}
 
 	err := app.Run(os.Args)
 	if err != nil {
