@@ -1,11 +1,10 @@
 var fibos = require('fibos');
 var fs = require("fs");
 var config = {
-    "producer-name": "FIBOS_BP",
-    "public-key": "",
-    "private-key": ""
+    "producer-name": "{{#BP_ACCOUNT_NAME#}}",
+    "public-key": "{{#BP_PUBLIC_KEY#}}",
+    "private-key": "{{#BP_PRIVATE_KEY#}}"
 };
-
 
 console.notice("Starting up FIBOS name:", config["producer-name"]);
 fibos.config_dir = config["producer-name"] + "_Dir";
